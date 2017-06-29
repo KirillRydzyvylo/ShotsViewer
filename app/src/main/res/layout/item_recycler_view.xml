@@ -5,7 +5,6 @@
     android:paddingTop="4dp"
     android:paddingBottom="4dp"
     android:id="@+id/frame_item">
-
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -16,8 +15,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="4dp"
+            android:paddingRight="4dp"
             android:orientation="vertical"
             android:layout_gravity="bottom"
+            android:id="@+id/item_texts"
             android:background="@color/colorTitle">
 
                 <TextView

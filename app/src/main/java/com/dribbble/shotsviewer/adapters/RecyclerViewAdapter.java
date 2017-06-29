@@ -4,11 +4,13 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -52,7 +54,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        holder.frameLayout.setLayoutParams( new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, itemHeight));
+        holder.frameLayout.setLayoutParams( new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, itemHeight));
+        holder.imageView.setLayoutParams(new FrameLayout.LayoutParams((int)(itemHeight*1.25), ViewGroup.LayoutParams.MATCH_PARENT,1));
+        holder.itemTexts.setLayoutParams(new FrameLayout.LayoutParams((int)(itemHeight*1.25), ViewGroup.LayoutParams.WRAP_CONTENT,Gravity.CENTER|Gravity.BOTTOM));
+
         holder.setIsRecyclable(false);
 
         Shot shot = shots.get(position);
@@ -86,6 +91,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class ViewHolder extends RecyclerView.ViewHolder{
         public TextView title;
         public TextView description;
+        public LinearLayout itemTexts;
         public ImageView imageView;
         public FrameLayout frameLayout;
 
@@ -93,6 +99,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             super(itemView);
             frameLayout = (FrameLayout)itemView.findViewById(R.id.frame_item);
             imageView = (ImageView) itemView.findViewById(R.id.image_item);
+            itemTexts = (LinearLayout)itemView.findViewById(R.id.item_texts);
             title = (TextView)itemView.findViewById(R.id.title_item);
             description = (TextView)itemView.findViewById(R.id.description_item);
 
